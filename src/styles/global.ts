@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     --background: #f0f2f5;
   }
 
-  //Tamanho de fonte da aplicação padrão vem como 16px, funciona muito bem para Desktop.
+  //Tamanho de fonte da aplicação padrão vem como 16px, funciona muito bem para Desktop. Porém para outros dispostivos pode não ser a melhor opção.
   html {
     @media (max-width: 1080px) { //Para uma tela até 1080px de largura o font-size será diminuido para 15px
       font-size: 93.75%; //15px
@@ -38,6 +38,15 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background: var(--background);
     -webkit-font-smoothing: antialiased;  //fontes mais nítidas e detalhadas
+  }
+
+  body, input, textarea, button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  }
+
+  h1 , h2 , h3, h4, h5, h6, strong {
+    font-weight: 600;
   }
 
   button {

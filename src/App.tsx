@@ -1,4 +1,5 @@
-import { GlobalStyle } from "./assets/styles/global";
+import { GlobalStyle } from "./styles/global";
+import { Header } from './components/header/Header';
 
 // import styled from "styled-components";
 // const Title = styled.h1`
@@ -8,10 +9,10 @@ import { GlobalStyle } from "./assets/styles/global";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <GlobalStyle />
-     <h1>Hello, World!</h1>
-    </div>
+      <Header />
+    </>
   );
 }
 
