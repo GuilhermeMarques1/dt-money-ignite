@@ -226,6 +226,8 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - 
 # 6º Class (Header):
   - Criação do component de Header e seu estilo.
+  - Estrutura de pasta para componentes
   - Uso de hover com filter.
 
-# 7º Class ():
+# 7º Class (Summary):
+  - Criação do component Dashboard e Summary e seus respectivos estilos
