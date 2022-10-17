@@ -1,5 +1,6 @@
 import { GlobalStyle } from "./styles/global";
-import { Header } from './components/header/Header';
+import { Header } from './components/Header';
+import { Dashboard } from "./components/Dashboard";
 
 // import styled from "styled-components";
 // const Title = styled.h1`
@@ -12,6 +13,7 @@ function App() {
     <>
       <GlobalStyle />
       <Header />
+      <Dashboard />
     </>
   );
 }
