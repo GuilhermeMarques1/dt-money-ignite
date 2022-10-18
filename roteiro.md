@@ -231,3 +231,13 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
 
 # 7º Class (Summary):
   - Criação do component Dashboard e Summary e seus respectivos estilos
+
+# 8º Class (Transaction Table):
+  - Criação do component Transaction Table e seus respectivos estilos
+
+# 9º Class (Criando Front-end sem back-end):
+  - Quando se está criando um projeto front-end e ainda não se tem a rota do backend pronta para consumi-lá, a melhor opção é utilizar alguma ferramente que simule o funcionamento dessa API.
+  - Algumas ferramentas: json-server, miragejs, msw(Mock Service Worker)
+
+# 10º Class (Configurando MirageJS):
+  - 
