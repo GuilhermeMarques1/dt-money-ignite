@@ -240,4 +240,26 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - Algumas ferramentas: json-server, miragejs, msw(Mock Service Worker)
 
 # 10º Class (Configurando MirageJS):
-  - 
+  - Primeiro passo foi criar no componente que vai utilizar a API, a estrutura da chamada dessa API, no caso no TransactionsTable, defini o useEffect(() => { fetch("http://localhost:3000/api/transactions") }, []); 
+  - yarn add miragejs
+  - ir no index.tsx e importar o createServer: import { createServer } from "miragejs"
+  - e criar as rotas e os retornos que serão utilizados:
+  - createServer({
+    routes() {
+      this.namespace = 'api';
+
+      this.get("/transactions", () => {
+        return([
+          {
+            id: 1,
+            title: "Transaction 1",
+            amount: 400,
+            createAt: new Date()
+          }
+        ])
+      })
+    }
+  })
+
+# 11º Class (Configurando cliente do Axios):
+  
