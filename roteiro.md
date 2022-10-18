@@ -262,4 +262,16 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   })
 
 # 11º Class (Configurando cliente do Axios):
-  
+  - Configurando um cliente http para não precisar usar o fetch que é a api nativa de requisições http do próprio browser, assim como do node e do react...
+  - E por que não utilizar o fetch? 
+  - primeiro porque para usar o fetch precisamos colocar sempre todo endereço da chamada de api em todas requisições, e tem uma parte do endereço da api sempre se repete.
+  - segundo precisamos sempre transformar nossas respostas em json
+  - Com o axios por exemplo, conseguimos interceptar requisições e respostar da nossa api. Por exemplo, seria possível adicionar uma regra no axios para que cada requisição que seja enviada para o backend envie junto um token de autenticação,... e nas respostas também seria possível interceptar a chamada da api e verificar alguma informação...
+  - yarn add axios
+  - criar pasta services em src/ essa pasta tem o significado de serviços de dados, onde conseguimos buscar e enviar dados
+  - criar o arquivo api.ts
+  - import axios from "axios";
+    export const api = axios.create({
+      baseURL: "http://localhost:3000/api",
+    }) 
+  -Voltar no component TransactionsTable e modificar o fetch para utilizar o api.get(), a resposta não precisa mais ser convertida para json e os dados da resposta ficam em response.data
