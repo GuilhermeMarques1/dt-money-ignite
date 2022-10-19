@@ -236,7 +236,7 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - Criação do component Transaction Table e seus respectivos estilos
 
 # 9º Class (Criando Front-end sem back-end):
-  - Quando se está criando um projeto front-end e ainda não se tem a rota do backend pronta para consumi-lá, a melhor opção é utilizar alguma ferramente que simule o funcionamento dessa API.
+  - Quando se está criando um projeto front-end e ainda não se tem a rota do backend pronta para consumi-lá, a melhor opção é utilizar alguma ferramenta que simule o funcionamento dessa API.
   - Algumas ferramentas: json-server, miragejs, msw(Mock Service Worker)
 
 # 10º Class (Configurando MirageJS):
@@ -264,9 +264,9 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
 # 11º Class (Configurando cliente do Axios):
   - Configurando um cliente http para não precisar usar o fetch que é a api nativa de requisições http do próprio browser, assim como do node e do react...
   - E por que não utilizar o fetch? 
-  - primeiro porque para usar o fetch precisamos colocar sempre todo endereço da chamada de api em todas requisições, e tem uma parte do endereço da api sempre se repete.
+  - primeiro porque para usar o fetch precisamos colocar sempre todo endereço da chamada de api em todas requisições, e tem uma parte do endereço da api que sempre se repete.
   - segundo precisamos sempre transformar nossas respostas em json
-  - Com o axios por exemplo, conseguimos interceptar requisições e respostar da nossa api. Por exemplo, seria possível adicionar uma regra no axios para que cada requisição que seja enviada para o backend envie junto um token de autenticação,... e nas respostas também seria possível interceptar a chamada da api e verificar alguma informação...
+  - Com o axios por exemplo, conseguimos interceptar requisições e respostas da nossa api. Por exemplo, seria possível adicionar uma regra no axios para que cada requisição que seja enviada para o backend envie junto um token de autenticação,... e nas respostas também seria possível interceptar a chamada da api e verificar alguma informação...
   - yarn add axios
   - criar pasta services em src/ essa pasta tem o significado de serviços de dados, onde conseguimos buscar e enviar dados
   - criar o arquivo api.ts
@@ -274,4 +274,21 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
     export const api = axios.create({
       baseURL: "http://localhost:3000/api",
     }) 
-  -Voltar no component TransactionsTable e modificar o fetch para utilizar o api.get(), a resposta não precisa mais ser convertida para json e os dados da resposta ficam em response.data
+  - Voltar no component TransactionsTable e modificar o fetch para utilizar o api.get(), a resposta não precisa mais ser convertida para json e os dados da resposta ficam em response.data
+
+# 12º Class (Configurando modal de criação):
+  - Configurar o modal de criação de nova transação, e para configura-lo vamos utilizar uma biblioteca externa chamada react-modal
+  - react-modal traz algumas funcionalidades prontas de modal, como apertar esc e fechar o modal, clicar fora e fechar o modal...
+  - yarn add react-modal
+  - https://github.com/reactjs/react-modal
+  - criar os states de [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false); colocar o nome completo da variável para deixar explícito ao que se refere
+  - e criar as functions para abrir e fechar o modal, utilizar como padrão handle, handle => funções que indicam que o usuário vai clicar ou executar algo.
+  - import Modal from "react-modal"
+  - Declara o modal em qualquer parte do conteúdo, <Modal isOpen="passa o estado" onRequestClose="funcao handle para fechar o modal"> </Modal>
+  - Como o modal parece não ser algo exclusivo do header, vamos remover o modal do header e colocá-lo no App.tsx e passar também as funções para lá
+  - Porém, o botão que controla para abrir o Modal fica no header, o que fazer nesse caso? o que vamos fazer é passar a função do componente pai (App) para o componente filho (Header)
+  - Para passar essa função declaramos uma interface da props: interface HeaderProps { onOpenNewTransactionModal: () => void; }, on no início do nome de funções, indica é uma função que não recebe nenhum parâmetro e não retorna nada.
+  - em Header({ onOpenNewTransactionModal }: HeaderProps) e passa para onClick.
+  - Modal.setAppElement('#root'); usar isso por questão de acessibilidade definir o root de onde o Modal vai aparecer
+
+# 13º Class ():
