@@ -291,4 +291,5 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - em Header({ onOpenNewTransactionModal }: HeaderProps) e passa para onClick.
   - Modal.setAppElement('#root'); usar isso por questão de acessibilidade definir o root de onde o Modal vai aparecer
 
-# 13º Class ():
+# 13º Class (Componente NewTransactionModal):
+  - Para não ficar todo conteúdo do modal dentro do App criar um component para esse modal
