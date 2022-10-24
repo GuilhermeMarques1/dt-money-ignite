@@ -24,7 +24,6 @@ function App() {
     setIsNewTransactionModalOpen(false);
   }
 
-
   return (
     <>
       <GlobalStyle />

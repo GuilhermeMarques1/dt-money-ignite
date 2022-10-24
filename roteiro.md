@@ -293,3 +293,13 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
 
 # 13º Class (Componente NewTransactionModal):
   - Para não ficar todo conteúdo do modal dentro do App criar um component para esse modal
+
+# 14º Class (Estrutura do Formulário):
+  - Criando estrutura do formulário
+
+# 15º Class (Estilizando Modal):
+
+# 16º Class (Criando botões de Tipo):
+  - yarn add polished -D
+  - biblioteca que permite algumas manipulações do css com javascript, exemplo escurecer uma cor import { darken } from polished;
+  - border-color: ${darken(0.1, "#d7d7d7")}; escurece a cor #d7d7d7 em 10%
