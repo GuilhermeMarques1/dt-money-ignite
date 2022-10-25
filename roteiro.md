@@ -315,3 +315,9 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - Transformar os botões de entrada e saída em componentes do styled-components
   - definir uma nova propriedade isActive para os botões e uma interface no styled-components
   - manipular a cor do texto baseada na propriedade isActive
+
+# 18º Class (Cor dos botões): 
+  - Declarar uma nova propriedade para o style-component RadioBox indicando a cor ativa: activeColor
+  - E manipular no css qual cor será exibida
+  - uso da função transparentize do polished para deixar a cor de fundo do botão mais transparente import { transparentize } from "polished"
+  - transparentize(0.9, "color"); //deixar 90% mais transparente a cor
