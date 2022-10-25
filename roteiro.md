@@ -295,11 +295,23 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - Para não ficar todo conteúdo do modal dentro do App criar um component para esse modal
 
 # 14º Class (Estrutura do Formulário):
-  - Criando estrutura do formulário
+  - Para estilizar o Modal ao criar o forms. Pela documentação é passado algumas formas para se estilizar tanto o overlay quanto o conteúdo do modal.
+  - Para substituir totalmente a estilização do modal, vamos passar dentro do modal a propriedade overlayClassName="nome-da-classe" e uma nova className para o content
+  - estilizar as duas novas classes em global style.
 
 # 15º Class (Estilizando Modal):
+  - Estiliza o forms
+  - button[type="submit"] {} //para estilizar botão do tipo submit
 
 # 16º Class (Criando botões de Tipo):
+  - cria um novo container para o estilo dos botões de entrada e saída
   - yarn add polished -D
-  - biblioteca que permite algumas manipulações do css com javascript, exemplo escurecer uma cor import { darken } from polished;
+  - biblioteca que permite algumas manipulações de cores no css com javascript, exemplo escurecer uma cor import { darken } from polished;
   - border-color: ${darken(0.1, "#d7d7d7")}; escurece a cor #d7d7d7 em 10%
+
+# 17º Class (Funcionamento dos botões): 
+  - Criar um estado no NewTransactionModal, porque precisamos armazenar qual botão a pessoa clicou ("sempre que precisamos armazenar uma informação baseada em cliques e inputs do usuário usamos estado")
+  - Colocar os sets de tipo no onClick
+  - Transformar os botões de entrada e saída em componentes do styled-components
+  - definir uma nova propriedade isActive para os botões e uma interface no styled-components
+  - manipular a cor do texto baseada na propriedade isActive
