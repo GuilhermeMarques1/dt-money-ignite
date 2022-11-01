@@ -195,7 +195,7 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
 ===================================================================================================
 
 # 1º Class (Estrutura com create-react-app):
-  - Create React App é basicamente uma estrutura pré-configurada de um projeto react para nos preocuparmos apenas com código e não toda configuração de webpack e Babel.
+  - Create React App é basicamente uma estrutura pré-configurada de um projeto react para nos preocuparmos apenas com código e não com toda configuração de webpack e Babel.
   - yarn create react-app my-app   |   Para rodar com o typescript:  yarn create react-app my-app --template typescript
   -  Limpar os arquivos que não são importantes da estrutura criada, em public deixar o só o index.html e em src deixar apenas o app.tsx, index.tsx e o react-app-env.d.ts
   - OBS: ao exportar componentes por exemplo dar preferência ao uso do export function App() {} do que do export default App; isso pois usando o export default quem define o nome do component é quem importa e não quem exporta. O que pode ser uma prática não tão boa.
@@ -210,7 +210,7 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - CSS in JS, yarn add styled-components
   - styled-components é uma biblioteca para usar o css no javascript. yarn add @types/styled-components -D
   - styled-components é muito vantajoso por permitir o encadeamento assim como o SASS, mas também possibilita a não sobreposição de estilos, estilos ficam scoped. Fora o uso de variáveis e lógica.
-  - A forma "normal" de se estilizar é colocando um className em uma tag html e depois importar um arquivo css. 
+  - A forma "normal" de se estilizar é colocando um className em uma tag html e depois importar um arquivo css.
     e.g.
     com CSS: .title { font-size: 64px; color: red; }
     com styled-components: import styled from "styled-components" const Title = styled.h1` font-size: 64px color: red; `
@@ -237,7 +237,7 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
 
 # 9º Class (Criando Front-end sem back-end):
   - Quando se está criando um projeto front-end e ainda não se tem a rota do backend pronta para consumi-lá, a melhor opção é utilizar alguma ferramenta que simule o funcionamento dessa API.
-  - Algumas ferramentas: json-server, miragejs, msw(Mock Service Worker)
+  - Algumas ferramentas: json-server, miragejs, msw(Mock Service Worker).
 
 # 10º Class (Configurando MirageJS):
   - Primeiro passo foi criar no componente que vai utilizar a API, a estrutura da chamada dessa API, no caso no TransactionsTable, defini o useEffect(() => { fetch("http://localhost:3000/api/transactions") }, []); 
@@ -281,7 +281,7 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - react-modal traz algumas funcionalidades prontas de modal, como apertar esc e fechar o modal, clicar fora e fechar o modal...
   - yarn add react-modal
   - https://github.com/reactjs/react-modal
-  - criar os states de [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false); colocar o nome completo da variável para deixar explícito ao que se refere
+  - criar os states de [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false); colocar o nome completo da variável para deixar explícito ao que se refere.
   - e criar as functions para abrir e fechar o modal, utilizar como padrão handle, handle => funções que indicam que o usuário vai clicar ou executar algo.
   - import Modal from "react-modal"
   - Declara o modal em qualquer parte do conteúdo, <Modal isOpen="passa o estado" onRequestClose="funcao handle para fechar o modal"> </Modal>
@@ -296,7 +296,7 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
 
 # 14º Class (Estrutura do Formulário):
   - Para estilizar o Modal ao criar o forms. Pela documentação é passado algumas formas para se estilizar tanto o overlay quanto o conteúdo do modal.
-  - Para substituir totalmente a estilização do modal, vamos passar dentro do modal a propriedade overlayClassName="nome-da-classe" e uma nova className para o content
+  - Para substituir totalmente a estilização do modal, vamos passar dentro do modal a propriedade overlayClassName="nome-da-classe" e uma nova className para o content.
   - estilizar as duas novas classes em global style.
 
 # 15º Class (Estilizando Modal):
@@ -321,3 +321,8 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - E manipular no css qual cor será exibida
   - uso da função transparentize do polished para deixar a cor de fundo do botão mais transparente import { transparentize } from "polished"
   - transparentize(0.9, "color"); //deixar 90% mais transparente a cor
+
+# 19º Class (Salvar dados do form):
+  - Criar estado para cada input do forms, e colocar no input as propriedades value={} e onChange={}
+  - Colocar na tag forms a propriedade onSubmit={} e criar a função function handleCreateNewTransaction()
+  - Ao colocar no onSubmit um parâmetro event pode ser passado para a function handleCreateNewTransaction, para o typescript existe o type FormEvent chamar em event.preventDefault(); para remover o funcionamento padrão do submit de form que recarrega a página.
