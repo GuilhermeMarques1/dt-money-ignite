@@ -386,3 +386,28 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   new Intl.DateTimeFormat('pt-BR').format(
     new Date(transaction.createAt)
   )
+
+# 23º Class(Introdução a Contextos):
+  - Contexto serve para compartilhamento de estado entre vários componentes da aplicação, independete de onde este componente esteja.
+  - Prop drilling: ficar passando uma propriedade vários níveis para baixo
+  - Por enquanto temos duas formas de compartilhar informações entre mais de um componente no React, a primeira é movendo o estado do componente para um componente pai e conseguimos repassar para os componentes filhos. E Segunda forma, para quando a informação é mais complexa ou parece não estar no lugar correto, utilizaremos Contexto.
+
+# 24º Class(Context API no React):
+  - Primeiro criamos um arquivo TrasactionContext.ts em src e chama o import { createContext } from "react"
+  - export const TransactionsContext = createContext([]); cria o contexto e passa o valor inicial dentro dos parenteses.
+  - Depois para acessar esse contexto iremos em app, para conseguirmos acessar o contexto precisamos de um Provider:
+  - Como Trasanction é uma informação que podemos acessar em todos componentes, vamos colocar o Provider do Transactions em volta de todo app: <TransactionsContext.Provider value = {[]}> value é obrigatório e passamos o valor atual do contexto.
+  - Agora para consumir o contexto há duas formas, como o Provider está por volta de todo App conseguimos acessar em qualquer componente:
+  1º API Render props (antiga):
+  <TransactionsContext.Consumer>
+    {
+      (data) => {
+        console.log(data);
+
+        return <p>Hello, World</p>
+      }
+    }
+  </TransactionsContext.Consumer>
+  
+  2º Hook useContext (novo método):
+  const data = useContext(TransactionContext);
