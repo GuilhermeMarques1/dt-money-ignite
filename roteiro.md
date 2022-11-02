@@ -374,3 +374,15 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   }
   - Agora no component de TransactionsTable: criar um estado para salvar as transactions e setar as transactions após a chamada da api no useEffect.
   - Depois fazer o map da transaction. E criar a interface da transaction
+
+# 22º Class(Formatando valores):
+  - Para fazer a formatação de valores resultantes da busca na API como o amount e a propriedade createAt iremos utilizar uma api nativa do próprio browser. Não precisamos de bibliotecas externas para fazer isso hoje.
+  - A biblioteca nativa para formatação se chama INTL: para o amount 
+  new Intl.NumberFormat('pt-BR', { 
+    style: "currency", 
+    currency: "BRL" 
+  }).format(transaction.amount)
+  - Para data:
+  new Intl.DateTimeFormat('pt-BR').format(
+    new Date(transaction.createAt)
+  )
