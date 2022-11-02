@@ -338,3 +338,39 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - O miragejs também possui uma abstração de banco de dados para criá-lo, define-se o models: { transaction: Model }
   - Na rota get: this.get("/transactions", () => { return this.schema.all("transaction"); })
 
+# 21º Class (Listando transações e seeds):
+  - O banco de dados do miragejs vai começar sempre vazio então existe uma forma de deixar alguns dados pré-cadastrados para que o banco já inicie com alguns dados: há uma função: 
+  seeds(server) { 
+    server.db.loadData({ 
+      transactions: [
+        {
+          id: 1,
+          title: "Freelance de website",
+          type: "deposit",
+          category: "Dev",
+          amount: 6000,
+          createAt: new Date("2021-02-12 09:00:00"),
+        },
+
+        {
+          id: 1,
+          title: "Freelance de website",
+          type: "deposit",
+          category: "Dev",
+          amount: 6000,
+          createAt: new Date("2021-02-12 09:00:00"),
+        },
+
+        {
+          id: 2,
+          title: "Aluguel",
+          type: "withdraw",
+          category: "Casa",
+          amount: 800,
+          createAt: new Date("2021-02-14 08:00:00"),
+        },
+      ], 
+    }) 
+  }
+  - Agora no component de TransactionsTable: criar um estado para salvar as transactions e setar as transactions após a chamada da api no useEffect.
+  - Depois fazer o map da transaction. E criar a interface da transaction
