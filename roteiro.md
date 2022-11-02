@@ -326,3 +326,15 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - Criar estado para cada input do forms, e colocar no input as propriedades value={} e onChange={}
   - Colocar na tag forms a propriedade onSubmit={} e criar a função function handleCreateNewTransaction()
   - Ao colocar no onSubmit um parâmetro event pode ser passado para a function handleCreateNewTransaction, para o typescript existe o type FormEvent chamar em event.preventDefault(); para remover o funcionamento padrão do submit de form que recarrega a página.
+
+# 20º Class (Inserindo transação na api):
+  - Fazer a chamada post para "/transactions" passando o data.
+  - definir no index do app a rota post: 
+  this.post("/transactions", (schema, request) => {
+    const data = JSON.parse(request.requestBody);
+
+    return schema.create("transaction", data);
+  })
+  - O miragejs também possui uma abstração de banco de dados para criá-lo, define-se o models: { transaction: Model }
+  - Na rota get: this.get("/transactions", () => { return this.schema.all("transaction"); })
+
