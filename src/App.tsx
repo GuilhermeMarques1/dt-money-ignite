@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import { Header } from "./components/Header";
 import { Dashboard } from "./components/Dashboard";
 import { NewTransactionModal } from "./components/NewTransactionModal";
-import { TransactionsContext } from "./TransactionsContext";
+import { TransactionsContext, TransactionsProvider } from "./TransactionsContext";
 
 // import styled from "styled-components";
 // const Title = styled.h1`
@@ -26,12 +26,14 @@ function App() {
   }
 
   return (
-    <TransactionsContext.Provider value={[]}>
+    // <TransactionsContext.Provider value={[]}>
+    <TransactionsProvider>
       <GlobalStyle />
       <NewTransactionModal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModal}/>
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
       <Dashboard />
-    </TransactionsContext.Provider>
+    </TransactionsProvider>
+    // </TransactionsContext.Provider>
   );
 }
 

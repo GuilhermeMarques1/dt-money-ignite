@@ -411,3 +411,28 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   
   2º Hook useContext (novo método):
   const data = useContext(TransactionContext);
+
+# 25º Class(Carregando Transações):
+  - Agora vamos carregar a lista de transações dentro do Contexto para tanto o Summary quanto o TransactionTable ter acesso as Transactions.
+  - Primeiro tiramos o estado de transactions de dentro do TransactionsTable. 
+  - Poderíamos somente mover o código do TransactionsTable para o App e carregar no value do Provider, mas não é a melhor forma.
+  - Vamos no TransactionsContext e mudamos o arquivo para tsx, porque vai exportar um componente TransactionProvider:
+  interface TransactionsProviderProps {
+    children: ReactNode //ReactNode aceitar qualquer tipo de conteúdo válido do React
+  }
+
+  export const function TransactionsProvider({ children }: TransactionsProviderProps ) {
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+    useEffect(() => {
+      api.get('/transactions')
+        .then((response) => setTransactions(response.data.transactions))
+    }, []);
+
+    return (
+      <TransactionsContext.Provider value={transactions}>
+        {children}
+      </TransactionsContext.Provider>
+    );
+  }
+  - E dentro do app vamos colocar o TransactionProvider que nós criamos ao invés do TransactionContext.Provider
