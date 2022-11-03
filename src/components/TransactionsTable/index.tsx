@@ -11,7 +11,7 @@ export function TransactionsTable() {
   //     .then(data => console.log(data));
   // }, []);
 
-  const transactions = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
 
   return(
     <Container>

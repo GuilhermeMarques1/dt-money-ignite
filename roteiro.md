@@ -436,3 +436,26 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
     );
   }
   - E dentro do app vamos colocar o TransactionProvider que nós criamos ao invés do TransactionContext.Provider
+
+# 26º Class(Movendo Criação para o Contexto):
+  - OBS: import seguir a ordem: import de arquivos js, depois imagens e depois estilos.
+  - Por enquanto ao cadastrar uma nova transação nada acontece.
+  - Vamos criar a transaction a partir do Contexto. No componente NewTransactionModal vamos usar context, porque no momento a única coisa que temos no Modal são as transactions vindas do contexto, mas no contexto essas transactions são um estado e seguindo o príncipio da imutabilidade não é possível fazer um push, por exemplo para o estado. 
+  - Para mudar isso poderíamos passar o setTransactions dentro do value também, mas uma alternativa melhor.
+  - Vamos passar toda parte de criação da transaction para o contexto:
+  type TransactionInput = Omit<Transaction, 'id' | 'createdAt' >;
+
+  function createTransaction(transaction: TransactionInput) {
+    api.post('/transactions', transaction)
+  }
+
+  - E vamos passar no value além do transactions a function createTransaction, value = {{ transactions, createTransaction }}
+  - Mudar a interface do Context 
+  interface TransactionContextData {
+    transactions: Transaction[],
+    createTransaction: (transaction: TransactionInput) => void;
+  }
+
+  export const TransactionsContext = createContext<TransactionContextData>(
+    {} as TransactionContextData
+  );
