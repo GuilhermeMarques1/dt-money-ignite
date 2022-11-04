@@ -459,3 +459,9 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   export const TransactionsContext = createContext<TransactionContextData>(
     {} as TransactionContextData
   );
+
+# 27º Class(Finalizando Inserção):
+  - Por enquanto ao inserir uma nova transação o modal não está fechando e não estamos listando a nova transaction, isso porque as transactions que estão sendo listadas estão em um estado, o estado precisaria ser atualizado para conseguir listar a nova transaction.
+  - Para fechar o modal colocamos ao fim da function para criação o método onRequestClose() e além disso como o handleCreateNewTransaction chama uma função que faz interação com o banco e não é uma função async, nós devemos colocar um await nessa função e transformar também a chamada da função em uma função async.
+  - set dos estados de volta para o valor padrão
+  - Agora para fazer o estado atualizar, vamos pegar da response da chamada post na API a transaction que foi inserida e dar um set no estado dela.
