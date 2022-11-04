@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import { Header } from "./components/Header";
 import { Dashboard } from "./components/Dashboard";
 import { NewTransactionModal } from "./components/NewTransactionModal";
-import { TransactionsContext, TransactionsProvider } from "./TransactionsContext";
+import { TransactionsProvider } from "./hooks/useTransaction";
 
 // import styled from "styled-components";
 // const Title = styled.h1`

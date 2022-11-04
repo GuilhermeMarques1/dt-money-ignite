@@ -496,4 +496,14 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
     total: 0,
   });
 
+# 29º Class(Criando Hook):
+  - Por enquanto toda vez que vamos utilizar o useContext nós importamos uma vez o useContext e depois o TransactionsContext.
+  - O que vamos fazer agora é criar um hook específico apenas para o Transactions. Criamos um pasta hooks, mudamos o nome do arquivo TrasactionsContex.tsx para useTransaction.tsx e colocamos dentro de hooks e exportamos o useContext(TransactionsContext) como:
 
+  export function useTransactions() {
+    const context = useContext(TransactionContext);
+
+    return context;
+  }
+
+  - Agora para importar precisamos apenas importar: import { useTransactions } from "/hooks/useTransactions";
