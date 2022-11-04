@@ -465,3 +465,35 @@ render(<h1>hello World</h1>, document.getElementById('root')); isso renderiza o 
   - Para fechar o modal colocamos ao fim da function para criação o método onRequestClose() e além disso como o handleCreateNewTransaction chama uma função que faz interação com o banco e não é uma função async, nós devemos colocar um await nessa função e transformar também a chamada da função em uma função async.
   - set dos estados de volta para o valor padrão
   - Agora para fazer o estado atualizar, vamos pegar da response da chamada post na API a transaction que foi inserida e dar um set no estado dela.
+
+# 28º Class(Calculando Resumo):
+  - Agora precisamos contar as Entradas, Saídas e Total. Para isso vamos no Summary.
+  - Uma primeira opção seria criarmos uma variável que acumulasse a soma de Entradas, Saídas e o Total dentro do Summary e como o summary utiliza um estado no contexto, ao inserir uma nova transaction o estado (que esta no contexto) será atualizado e logo o componente Summary também será atualizado então a função que faz a contagem dos resumos será carregado novamente.
+
+  const totalDeposits = transactions.reduce((acc, transaction) => {
+    if(transaction.type === 'deposit') {
+      return acc + transaction.amount;
+    }
+
+    return acc;
+  }, 0);
+
+  - Faz o reduce também, mas para um objeto como acumulator { deposits: 0, withdraws: 0, total: 0 }
+
+  const summary = transaction.reduce((acc, transaction) => {
+    if(transaction.type === 'deposit') {
+      acc.deposits += transaction.amount 
+      acc.total += trsanction.amount
+    } else {
+      acc.withdraws -= transaction.amount
+      acc.total -= trsanction.amount
+    }
+
+    return acc;
+  }, {
+    deposits: 0,
+    withdraws: 0,
+    total: 0,
+  });
+
+
